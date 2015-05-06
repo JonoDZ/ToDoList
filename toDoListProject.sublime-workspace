@@ -159,7 +159,7 @@
 			"file": "js/script.js",
 			"settings":
 			{
-				"buffer_size": 2334,
+				"buffer_size": 2322,
 				"line_ending": "Windows",
 				"name": "// each entry should look like this:"
 			}
@@ -205,7 +205,7 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/jzac9_000/Documents/work/Web Design/Personal Projects/toDoList/ToDoList"
+		"/F/toDoList/v0.2_2 - Copy"
 	],
 	"file_history":
 	[
@@ -344,15 +344,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2334,
+						"buffer_size": 2322,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								440,
-								440
+								1180,
+								1180
 							]
 						],
 						"settings":
@@ -362,7 +362,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 504.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
