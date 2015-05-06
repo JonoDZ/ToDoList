@@ -1,0 +1,90 @@
+body {
+	font-size: 10pt;
+}
+
+h1 {
+	font-family: calibri, arial;
+	text-align: center;
+	font-size: 50px;
+	margin-bottom: 10px;
+	margin-top: 20px
+}
+
+#container {
+	width: 600px;
+	margin-left: auto;
+	margin-right: auto;
+	height: 100%;
+}
+
+input {
+	margin-left: 3px;
+	margin-bottom: 0px;
+	width: 500px;
+	height: 40px;
+	font-size: 25px;
+	border: 1px solid #ccc; 
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+	padding-left: 10px;
+	padding-right: 0px;
+	float: left;
+}
+
+button
+{
+	float: right;
+	padding-left: 0px;
+	padding-right: 0px;
+	margin-right: 3px;
+	width: 82px;
+	height: 44px;
+	text-align: center;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-style: none;
+	border: 0px;
+	background-color: #77b55a;
+	font-size: 20px;
+}
+
+.deleteButton {
+	float: right;
+}
+
+*:focus {
+	outline: none;
+}
+
+#todoList {
+	font-size: 25px;
+	font-style: calibri, arial;
+}
+
+.toDoEach {
+	width: 535px;
+	height: 30px;
+	vertical-align: middle;	
+	list-style: none;
+	margin-left: 14px;
+	padding-top: 10px;
+	font-style: calibri, arial;
+}
+
+
+
+ul {
+	padding-left: 0px;
+	margin-top: 55px;
+}
+
+/*li {
+	list-style: none;
+	margin-left: 14px;
+	padding-top: 10px;
+	font-style: calibri, arial;	
+} */
