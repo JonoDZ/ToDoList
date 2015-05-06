@@ -15,6 +15,8 @@ list.addEventListener('click', function(e) {
 	}
 });
 
+
+// Enter key triggers the list addition
 inItemText.onkeyup = function(event)
 
 {	// event.which 13 = ENTER
@@ -24,7 +26,7 @@ inItemText.onkeyup = function(event)
 	}
 }
 
-
+// Clicking "add" triggers the list addition
 buttonNew.onclick = function () 
 	{
 		inputToToDo();
@@ -36,12 +38,13 @@ function removeEach() {
 	removeThis.parentNode.removeChild(child);
 }
 
-
+//takes text inputbox, process it, pass it through to "addNewItem"
 function inputToToDo () {
 
 	var inItemText = document.getElementById("inItemText")
 	var itemText = inItemText.value.trim()
 
+	//check for blank space
 	if (!itemText) 
 	{
 		document.getElementById("inItemText").value	= "";
@@ -51,37 +54,59 @@ function inputToToDo () {
 
 	addNewItem(list, itemText);
 	
+	//reset inputbox
 	document.getElementById("inItemText").value	= "";
 	inItemText.focus();
 };
 
-
+//creates and adds the new item
 function addNewItem(list, itemTextA) {
 	
-	//create toDo item
+	//create toDo DOM item
 	var listItem = document.createElement("li");
-	listItem.id = "list" + i;
+	listItem.id = "list" + idCount;
 	listItem.className = "toDoEach";
 	var span = document.createElement('span');
 	listItem.appendChild(span);
 	span.innerText = itemTextA;
 
-	//create delete button
+	//create DOM delete button
 	var imgItem = document.createElement("img");
-	imgItem.id = "cd" + i;
+	imgItem.id = "cd" + idCount;
 	imgItem.className = "deleteButton";
 	imgItem.src ="./images/red.png";
 
-	//put items into HTML
+	//append HTML
 	list.appendChild(listItem);
 	listItem.appendChild(imgItem);
 
-	i++;
+	idCount++;
 };
 
-var i = 0;
+//declare variable for generating ID's
+var idCount = 0;
+
+
 
 //garbage collection
 //accessability (img/a)
 //storage
 //dragging list order - DOM events - drag?
+
+/*
+
+We talked about:
+-----
+Inheritance and the prototype chain
+Delegating events, and DOM events in general (MDN has a great reference)
+addEventListener
+removeChild
+
+
+Things for next time:
+-----
+Missing functions
+Drag n drop
+Accessibility
+Local storage
+Garbage collection

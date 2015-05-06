@@ -159,7 +159,7 @@
 			"file": "js/script.js",
 			"settings":
 			{
-				"buffer_size": 1759,
+				"buffer_size": 2322,
 				"line_ending": "Windows",
 				"name": "// each entry should look like this:"
 			}
@@ -205,7 +205,7 @@
 	},
 	"expanded_folders":
 	[
-		"/E/toDoList/v0.2_2"
+		"/F/toDoList/v0.2_2 - Copy"
 	],
 	"file_history":
 	[
@@ -235,7 +235,7 @@
 	],
 	"find":
 	{
-		"height": 23.0
+		"height": 34.0
 	},
 	"find_in_files":
 	{
@@ -250,6 +250,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"itemTextA",
 			"40",
 			"itemte",
 			"autopl",
@@ -343,15 +344,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1759,
+						"buffer_size": 2322,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1180,
+								1180
 							]
 						],
 						"settings":
@@ -361,7 +362,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 504.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
