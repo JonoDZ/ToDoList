@@ -1,5 +1,6 @@
 // each entry should look like this:
 // 	<li><input type="checkbox"/> Test me please </li>
+//
 
 
 inItemText.focus();
@@ -9,12 +10,11 @@ var list = document.getElementById("todoList");
 
 list.addEventListener('click', function(e) {
 	var el = e.target;
-	if (el.nodeName === 'IMG') {
+	if (el.className === 'deleteButton') {
 		// delete
 		this.removeChild(el.parentNode);
 	}
 });
-
 
 // Enter key triggers the list addition
 inItemText.onkeyup = function(event)
