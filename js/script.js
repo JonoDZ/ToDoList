@@ -9,20 +9,23 @@ var deleteClick = document.getElementsByClassName('deleteButton');
 var list = document.getElementById("todoList");
 
 
+//delete line on click
 list.addEventListener('click', function(e) {
 	var el = e.target;
 	if (el.className === 'deleteButton') {
-		// delete
-		//this.removeChild(el.parentNode);
-		this.style.textDecoration="line-through";
+
+		this.removeChild(el.parentNode);
+		
 	}
 });
 
+
+//cross out line on click
 list.addEventListener('click', function(e) {
 	var el = e.target;
 	if (el.className === 'lineButton') {
 		// delete
-		this.style.textDecoration="line-through";
+		el.parentNode.style.textDecoration="line-through";
 	}
 });
 
@@ -81,7 +84,7 @@ function addNewItem(list, itemTextA) {
 
 	//create delete button
 	var imgItem = document.createElement("img");
-	imgItem.id = "cd" + i;
+	imgItem.id = "delBut" + i;
 	imgItem.className = "deleteButton";
 	imgItem.src ="./images/red.png";
 
