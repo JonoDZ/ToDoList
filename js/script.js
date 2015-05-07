@@ -87,6 +87,7 @@ function addNewItem(list, itemTextA) {
 	var listItem = document.createElement("li");
 	listItem.id = "list" + idCount;
 	listItem.className = "toDoEach";
+	listItem.draggable = "true";
 	var span = document.createElement('span');
 	listItem.appendChild(span);
 	span.innerText = itemTextA;
