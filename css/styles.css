@@ -94,9 +94,13 @@ button
 	text-align: center;
 	vertical-align: middle;
 	float: right;
-
 }
 
+.dragButton {
+	float: right;
+	width: 30px;
+	height: 35px;
+}
 
 *:focus {
 	outline: none;

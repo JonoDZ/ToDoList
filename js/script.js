@@ -87,11 +87,9 @@ function addNewItem(list, itemTextA) {
 	var listItem = document.createElement("li");
 	listItem.id = "list" + idCount;
 	listItem.className = "toDoEach";
-	listItem.draggable = "true";
 	var span = document.createElement('span');
 	listItem.appendChild(span);
 	span.innerText = itemTextA;
-
 
 	//create delete span
 	var imgItem = document.createElement("span");
@@ -100,32 +98,23 @@ function addNewItem(list, itemTextA) {
 	imgItem.innerText ="X";
 
 	//create line-through span
-	var imgItem1 = document.createElement("span");
-	imgItem1.id = "linBut" + idCount;
-	imgItem1.className = "lineButton";
-	imgItem1.innerText = "---";
+	var lineItem = document.createElement("span");
+	lineItem.id = "linBut" + idCount;
+	lineItem.className = "lineButton";
+	lineItem.innerText = "---";
 
-
-	/* Image based buttons
-
-	//create delete button
-	var imgItem = document.createElement("img");
-	imgItem.id = "delBut" + idCount;
-	imgItem.className = "deleteButton";
-	imgItem.src ="./images/cross.png";
-
-	//create line-through button
-	var imgItem1 = document.createElement("img");
-	imgItem1.id = "linBut" + idCount;
-	imgItem1.className = "lineButton";
-	imgItem1.src ="./images/line.png";
-	*/
-	
+	//create drag button
+	var dragItem = document.createElement("img");
+	dragItem.id = "dragBut" + idCount;
+	dragItem.className = "dragButton";
+	listItem.draggable = "true";
+	dragItem.src ="./images/drag.png";
 
 	//put items into DOM
 	list.appendChild(listItem);
 	listItem.appendChild(imgItem);
-	listItem.appendChild(imgItem1);
+	listItem.appendChild(lineItem);
+	listItem.appendChild(dragItem);
 	
 	idCount++;
 };

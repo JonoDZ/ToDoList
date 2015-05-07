@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"margin",
+				"margin-top"
+			],
+			[
+				"board",
+				"border-top-left-radius"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"in",
+				"innerText"
+			],
+			[
+				"te",
+				"textDecoration"
+			],
+			[
 				"cl",
 				"className"
 			],
@@ -40,10 +60,6 @@
 				"imgItem"
 			],
 			[
-				"margin",
-				"margin-bottom"
-			],
-			[
 				"padd",
 				"padding-top"
 			],
@@ -53,10 +69,6 @@
 			],
 			[
 				"font",
-				"font-style"
-			],
-			[
-				"fon",
 				"font-style"
 			],
 			[
@@ -74,10 +86,6 @@
 			[
 				"border",
 				"border-bottom-right-radius"
-			],
-			[
-				"board",
-				"border-bottom-left-radius"
 			],
 			[
 				"border-top",
@@ -106,10 +114,6 @@
 			[
 				"id",
 				"id123"
-			],
-			[
-				"in",
-				"inItemText"
 			],
 			[
 				"get",
@@ -163,7 +167,7 @@
 			"file": "js/script.js",
 			"settings":
 			{
-				"buffer_size": 1991,
+				"buffer_size": 2658,
 				"line_ending": "Windows",
 				"name": "// each entry should look like this:"
 			}
@@ -172,7 +176,7 @@
 			"file": "css/styles.css",
 			"settings":
 			{
-				"buffer_size": 1321,
+				"buffer_size": 1689,
 				"line_ending": "Windows"
 			}
 		}
@@ -209,7 +213,8 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/jzac9_000/Documents/work/Web Design/Personal Projects/toDoList/ToDoList"
+		"/C/Users/jzac9_000/Documents/work/Web Design/Personal Projects/toDoList/ToDoList",
+		"/C/Users/jzac9_000/Documents/work/Web Design/Personal Projects/toDoList/ToDoList/images"
 	],
 	"file_history":
 	[
@@ -254,6 +259,12 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"deleteButton",
+			"lineButton",
+			"deletec",
+			"click",
+			"cd",
+			"\";\n",
 			"itemTextA",
 			"40",
 			"itemte",
@@ -339,7 +350,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -348,15 +359,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1991,
+						"buffer_size": 2658,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								491,
-								491
+								1893,
+								1893
 							]
 						],
 						"settings":
@@ -366,7 +377,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 546.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -378,15 +389,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1321,
+						"buffer_size": 1689,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1036,
-								1036
+								349,
+								349
 							]
 						],
 						"settings":
@@ -395,10 +406,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 185.0,
+						"translation.y": 378.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
