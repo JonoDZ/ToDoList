@@ -57,15 +57,12 @@ button
 	font-size: 20px;
 }
 
-
-
 #todoList {
 	font-size: 30px;
-	font-style: calibri, arial;
+	font-style: calibri, sans-serif;
 	margin-top: 2px;
 	padding-left: 0px;
 }
-
 
 .toDoEach {
 	width: 583px;
@@ -90,7 +87,7 @@ button
 .deleteButton {
 	width: 41px;
 	height: 35px;
-	font-size: 25px;
+	font-size: 30px;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
 	background-color: #ff3838;
@@ -104,14 +101,3 @@ button
 *:focus {
 	outline: none;
 }
-
-
-
-
-
-/*li {
-	list-style: none;
-	margin-left: 14px;
-	padding-top: 10px;
-	font-style: calibri, arial;	
-} */
