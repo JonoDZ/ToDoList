@@ -39,7 +39,7 @@ list.addEventListener('click', function(e) {
 
 
 
-//
+//enter text when pressing enter
 inItemText.onkeyup = function(event)
 
 {	// event.which 13 = ENTER
@@ -49,6 +49,7 @@ inItemText.onkeyup = function(event)
 	}
 }
 
+//enter text when clicking "add"
 buttonNew.onclick = function () 
 	{
 		inputToToDo();
@@ -90,6 +91,22 @@ function addNewItem(list, itemTextA) {
 	listItem.appendChild(span);
 	span.innerText = itemTextA;
 
+
+	//create delete span
+	var imgItem = document.createElement("span");
+	imgItem.id = "delBut" + idCount;
+	imgItem.className = "deleteButton";
+	imgItem.innerText ="X";
+
+	//create line-through span
+	var imgItem1 = document.createElement("span");
+	imgItem1.id = "linBut" + idCount;
+	imgItem1.className = "lineButton";
+	imgItem1.innerText = "---";
+
+
+	/* Image based buttons
+
 	//create delete button
 	var imgItem = document.createElement("img");
 	imgItem.id = "delBut" + idCount;
@@ -101,13 +118,14 @@ function addNewItem(list, itemTextA) {
 	imgItem1.id = "linBut" + idCount;
 	imgItem1.className = "lineButton";
 	imgItem1.src ="./images/line.png";
-
+	*/
+	
 
 	//put items into DOM
 	list.appendChild(listItem);
 	listItem.appendChild(imgItem);
 	listItem.appendChild(imgItem1);
-
+	
 	idCount++;
 };
 

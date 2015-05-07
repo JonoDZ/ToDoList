@@ -1,5 +1,6 @@
 body {
 	font-size: 10pt;
+	font-family: calibri, arial;
 }
 
 h1 {
@@ -17,12 +18,16 @@ h1 {
 	height: 100%;
 }
 
+#searchBar {
+	height: 40px;
+	margin-bottom: 10px;
+}
+
 input {
 	margin-left: 3px;
-	margin-bottom: 0px;
 	width: 500px;
 	height: 40px;
-	font-size: 25px;
+	font-size: 30px;
 	border: 1px solid #ccc; 
 	border-top-left-radius: 5px;
 	border-bottom-left-radius: 5px;
@@ -53,12 +58,46 @@ button
 }
 
 
-.deleteButton {
-	float: right;
+
+#todoList {
+	font-size: 30px;
+	font-style: calibri, arial;
+	margin-top: 2px;
+	padding-left: 0px;
+}
+
+
+.toDoEach {
+	width: 583px;
+	height: 40px;
+	vertical-align: middle;	
+	list-style: none;
+	margin-left: 14px;
 }
 
 .lineButton {
+	width: 42px;
+	height: 35px;
+	font-size: 25px;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	background-color: #ff9932;
+	text-align: center;
+	vertical-align: middle;
 	float: right;
+}
+
+.deleteButton {
+	width: 41px;
+	height: 35px;
+	font-size: 25px;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #ff3838;
+	text-align: center;
+	vertical-align: middle;
+	float: right;
+
 }
 
 
@@ -66,27 +105,9 @@ button
 	outline: none;
 }
 
-#todoList {
-	font-size: 25px;
-	font-style: calibri, arial;
-}
-
-.toDoEach {
-	width: 567px;
-	height: 30px;
-	vertical-align: middle;	
-	list-style: none;
-	margin-left: 14px;
-	padding-top: 10px;
-	font-style: calibri, arial;
-}
 
 
 
-ul {
-	padding-left: 0px;
-	margin-top: 55px;
-}
 
 /*li {
 	list-style: none;
