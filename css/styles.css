@@ -52,9 +52,15 @@ button
 	font-size: 20px;
 }
 
+
 .deleteButton {
 	float: right;
 }
+
+.lineButton {
+	float: right;
+}
+
 
 *:focus {
 	outline: none;

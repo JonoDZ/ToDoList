@@ -20,12 +20,20 @@ list.addEventListener('click', function(e) {
 });
 
 
-//cross out line on click
+//cross out text on click
 list.addEventListener('click', function(e) {
 	var el = e.target;
 	if (el.className === 'lineButton') {
 		// delete
-		el.parentNode.style.textDecoration="line-through";
+
+		if (el.parentNode.style.textDecoration === "line-through") {
+			el.parentNode.style.textDecoration="none";
+		}
+
+		else {
+			el.parentNode.style.textDecoration="line-through";
+		}
+
 	}
 });
 
@@ -86,11 +94,18 @@ function addNewItem(list, itemTextA) {
 	var imgItem = document.createElement("img");
 	imgItem.id = "delBut" + i;
 	imgItem.className = "deleteButton";
-	imgItem.src ="./images/red.png";
+	imgItem.src ="./images/cross.png";
+
+	var imgItem1 = document.createElement("img");
+	imgItem1.id = "linBut" + i;
+	imgItem1.className = "lineButton";
+	imgItem1.src ="./images/line.png";
+
 
 	//put items into HTML
 	list.appendChild(listItem);
 	listItem.appendChild(imgItem);
+	listItem.appendChild(imgItem1);
 
 	i++;
 };
