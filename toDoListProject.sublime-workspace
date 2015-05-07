@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"cl",
+				"className"
+			],
+			[
 				"todo",
 				"todoList"
 			],
@@ -159,7 +163,7 @@
 			"file": "js/script.js",
 			"settings":
 			{
-				"buffer_size": 2322,
+				"buffer_size": 1991,
 				"line_ending": "Windows",
 				"name": "// each entry should look like this:"
 			}
@@ -205,7 +209,7 @@
 	},
 	"expanded_folders":
 	[
-		"/F/toDoList/v0.2_2 - Copy"
+		"/C/Users/jzac9_000/Documents/work/Web Design/Personal Projects/toDoList/ToDoList"
 	],
 	"file_history":
 	[
@@ -344,15 +348,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2322,
+						"buffer_size": 1991,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1180,
-								1180
+								491,
+								491
 							]
 						],
 						"settings":
@@ -362,7 +366,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 504.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -391,7 +395,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 454.0,
+						"translation.y": 185.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
