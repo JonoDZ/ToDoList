@@ -84,7 +84,7 @@ function addNewItem(list, itemTextA) {
 	
 	//create toDo item
 	var listItem = document.createElement("li");
-	listItem.id = "list" + i;
+	listItem.id = "list" + idCount;
 	listItem.className = "toDoEach";
 	var span = document.createElement('span');
 	listItem.appendChild(span);
@@ -92,25 +92,26 @@ function addNewItem(list, itemTextA) {
 
 	//create delete button
 	var imgItem = document.createElement("img");
-	imgItem.id = "delBut" + i;
+	imgItem.id = "delBut" + idCount;
 	imgItem.className = "deleteButton";
 	imgItem.src ="./images/cross.png";
 
+	//create line-through button
 	var imgItem1 = document.createElement("img");
-	imgItem1.id = "linBut" + i;
+	imgItem1.id = "linBut" + idCount;
 	imgItem1.className = "lineButton";
 	imgItem1.src ="./images/line.png";
 
 
-	//put items into HTML
+	//put items into DOM
 	list.appendChild(listItem);
 	listItem.appendChild(imgItem);
 	listItem.appendChild(imgItem1);
 
-	i++;
+	idCount++;
 };
 
-var i = 0;
+var idCount = 0;
 
 //garbage collection
 //accessability (img/a)
