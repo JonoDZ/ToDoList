@@ -12,7 +12,7 @@ var deleteClick = document.getElementsByClassName('deleteButton');
 var list = document.getElementById("todoList");
 
 
-//delete line on click
+//delete line when clicking 'X'
 list.addEventListener('click', function(e) {
 	var el = e.target;
 	if (el.className === 'deleteButton') {
@@ -23,7 +23,7 @@ list.addEventListener('click', function(e) {
 });
 
 
-//cross out text on click
+//cross out text on clicking '---'
 list.addEventListener('click', function(e) {
 	var el = e.target;
 	if (el.className === 'lineButton') {
@@ -58,34 +58,32 @@ buttonNew.onclick = function ()
 		inputToToDo();
 	}
 
-function removeEach() {
-	var removeThis = getElementById("todoList");
-	var child = document.getElementById("list0");
-	removeThis.parentNode.removeChild(child);
-}
-
-//empty the list
+//clear the list when clicking 'reset'
 resetButton.onclick = function () {
 		document.getElementById('todoList').innerHTML = "";
 		inputText.focus();
 	}
 
+//save list to cookie
 saveButton.onclick = function () {
-	saveToCookie = document.getElementById("todoList").innerHTML;
+	var saveToCookie = document.getElementById("todoList").innerHTML;
+	docCookies.setItem('saveCookie', saveToCookie);
+	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
+	
 }
-//takes list data, saves to a cookie
-function saveToCookie () {
+
+//load list to cookie
+loadButton.onclick = function () {
+
+	
+	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
 
 }
-
-
-
-
 
 function inputToToDo () {
 
-	var inputText = document.getElementById("inputText")
-	var itemText = inputText.value.trim()
+	var inputText = document.getElementById("inputText");
+	var itemText = inputText.value.trim();
 
 	if (!itemText) 
 	{
@@ -100,7 +98,6 @@ function inputToToDo () {
 	inputText.focus();
 };
 
-
 function addNewItem(list, itemTextA) {
 	
 	//create toDo item
@@ -109,19 +106,19 @@ function addNewItem(list, itemTextA) {
 	listItem.className = "toDoEach";
 	var span = document.createElement('span');
 	listItem.appendChild(span);
-	span.innerText = itemTextA;
+	span.textContent = itemTextA;
 
 	//create delete span
 	var imgItem = document.createElement("span");
 	imgItem.id = "delBut" + idCount;
 	imgItem.className = "deleteButton";
-	imgItem.innerText ="X";
+	imgItem.textContent ="X";
 
 	//create line-through span
 	var lineItem = document.createElement("span");
 	lineItem.id = "linBut" + idCount;
 	lineItem.className = "lineButton";
-	lineItem.innerText = "---";
+	lineItem.textContent = "---";
 
 	//create drag button
 	var dragItem = document.createElement("img");
