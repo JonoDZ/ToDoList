@@ -62,20 +62,16 @@ buttonNew.onclick = function ()
 resetButton.onclick = function () {
 		document.getElementById('todoList').innerHTML = "";
 		inputText.focus();
-	}
+}
 
 //save list to cookie
 saveButton.onclick = function () {
-	var saveToCookie = document.getElementById("todoList").innerHTML;
-	docCookies.setItem('saveCookie', saveToCookie);
-	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
+	docCookies.setItem('saveCookie', document.getElementById("todoList").innerHTML);
 	
 }
 
 //load list to cookie
 loadButton.onclick = function () {
-
-	
 	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
 
 }
