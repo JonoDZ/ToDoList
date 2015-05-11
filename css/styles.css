@@ -18,6 +18,29 @@ h1 {
 	height: 100%;
 }
 
+.slr {
+	height: 30px;
+	width: 195px;
+	text-align: center;
+	line-height: 20px;
+	font-family: calibri, sans-serif, arial;
+	font-size: 18px;
+	background-color: #77b55a;
+	border-style: none;
+	border: 0px;
+	border-radius: 5px;
+}
+
+#saveBut {
+	margin-right: 3px;
+	margin-left: 1px;
+}
+
+#resetBut {
+	margin-left: 3px;
+
+}
+
 #searchBar {
 	height: 40px;
 	margin-bottom: 10px;

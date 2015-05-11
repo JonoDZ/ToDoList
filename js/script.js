@@ -54,12 +54,14 @@ buttonNew.onclick = function ()
 //clear the list when clicking 'reset'
 resetButton.onclick = function () {
 		document.getElementById('todoList').innerHTML = "";
+		idCount = 0;
 		inputText.focus();
 }
 
 //save list to cookie
 saveButton.onclick = function () {
 	docCookies.setItem('saveCookie', document.getElementById("todoList").innerHTML);
+	docCookies.setItem('idCount', idCount)
 	inputText.focus();
 	
 }
@@ -67,6 +69,7 @@ saveButton.onclick = function () {
 //load list to cookie
 loadButton.onclick = function () {
 	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
+	idCount = docCookies.getItem('idCount');
 	inputText.focus();
 
 }
@@ -89,9 +92,10 @@ function inputToToDo () {
 	inputText.focus();
 };
 
+//creates various DOM elements
 function addNewItem(list, itemTextA) {
 	
-	//create toDo item
+	//create <Li> for the ToDo item
 	var listItem = document.createElement("li");
 	listItem.id = "list" + idCount;
 	listItem.className = "toDoEach";
@@ -100,26 +104,28 @@ function addNewItem(list, itemTextA) {
 	listItem.appendChild(span);
 	span.textContent = itemTextA;
 
-	//create delete span
+	//create delete <span>
 	var imgItem = document.createElement("span");
 	imgItem.id = "delBut" + idCount;
 	imgItem.className = "deleteButton";
 	imgItem.textContent ="X";
 
-	//create line-through span
+	//create line-through <span>
 	var lineItem = document.createElement("span");
 	lineItem.id = "linBut" + idCount;
 	lineItem.className = "lineButton";
 	lineItem.textContent = "---";
 
-	//create drag button
+	//create drag button img
 	var dragItem = document.createElement("img");
 	dragItem.id = "dragBut" + idCount;
 	dragItem.className = "dragButton";
 	dragItem.src ="./images/drag.png";
 
-	//put items into DOM
+	//put <li> into DOM
 	list.appendChild(listItem);
+
+	//put these into <li>
 	listItem.appendChild(imgItem);
 	listItem.appendChild(lineItem);
 	listItem.appendChild(dragItem);
@@ -127,12 +133,29 @@ function addNewItem(list, itemTextA) {
 	idCount++;
 };
 
+//used to increment ID's when creating DOM elements in function addNewItem()
 var idCount = 0;
+
+
+/*/////////////////
+Frameworks and notes
+*//////////////////
 
 //garbage collection
 //accessability (img/a)
 //storage
 //dragging list order - DOM events - drag?
+
+/*
+done:
+	functionality
+		storage - in the form of cookies
+			save
+			load
+		line through - if statement under pre-existing eventlistener
+		reset button
+
+
 
 
 /*\
