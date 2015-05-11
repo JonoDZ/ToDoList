@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"save",
+				"saveCookie"
+			],
+			[
+				"get",
+				"getItem"
+			],
+			[
+				"doc",
+				"docCookies"
+			],
+			[
+				"tot",
+				"todoList"
+			],
+			[
+				"on",
+				"onclick"
+			],
+			[
 				"margin",
 				"margin-top"
 			],
@@ -116,10 +136,6 @@
 				"id123"
 			],
 			[
-				"get",
-				"getElementById"
-			],
-			[
 				"size",
 				"font-size"
 			],
@@ -159,7 +175,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 640,
+				"buffer_size": 796,
 				"line_ending": "Windows"
 			}
 		},
@@ -167,7 +183,7 @@
 			"file": "js/script.js",
 			"settings":
 			{
-				"buffer_size": 2658,
+				"buffer_size": 5685,
 				"line_ending": "Windows",
 				"name": "// each entry should look like this:"
 			}
@@ -176,7 +192,7 @@
 			"file": "css/styles.css",
 			"settings":
 			{
-				"buffer_size": 1689,
+				"buffer_size": 1634,
 				"line_ending": "Windows"
 			}
 		}
@@ -256,9 +272,13 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"innerText",
+			"list",
+			"resetButton",
+			"inItemText",
 			"deleteButton",
 			"lineButton",
 			"deletec",
@@ -329,15 +349,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 640,
+						"buffer_size": 796,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								421,
-								421
+								537,
+								537
 							]
 						],
 						"settings":
@@ -350,7 +370,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
@@ -359,15 +379,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2658,
+						"buffer_size": 5685,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1893,
-								1893
+								972,
+								972
 							]
 						],
 						"settings":
@@ -377,7 +397,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 546.0,
+						"translation.y": 270.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -389,15 +409,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1689,
+						"buffer_size": 1634,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								349,
-								349
+								691,
+								691
 							]
 						],
 						"settings":
@@ -406,10 +426,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 378.0,
+						"translation.y": 675.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]

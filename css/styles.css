@@ -75,25 +75,27 @@ input {
 .lineButton {
 	width: 42px;
 	height: 35px;
-	font-size: 25px;
-	border-bottom-left-radius: 5px;
-	border-top-left-radius: 5px;
-	background-color: #ff9932;
+	font-size: 30px;
 	text-align: center;
 	vertical-align: middle;
 	float: right;
+	cursor: pointer;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	background-color: #ff9932;
 }
 
 .deleteButton {
 	width: 41px;
 	height: 35px;
 	font-size: 30px;
-	border-bottom-right-radius: 5px;
-	border-top-right-radius: 5px;
-	background-color: #ff3838;
 	text-align: center;
 	vertical-align: middle;
 	float: right;
+	cursor: pointer;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: #ff3838;
 }
 
 .dragButton {

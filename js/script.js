@@ -12,17 +12,6 @@ var deleteClick = document.getElementsByClassName('deleteButton');
 var list = document.getElementById("todoList");
 
 
-//delete line when clicking 'X'
-list.addEventListener('click', function(e) {
-	var el = e.target;
-	if (el.className === 'deleteButton') {
-
-		this.removeChild(el.parentNode);
-		
-	}
-});
-
-
 //cross out text on clicking '---'
 list.addEventListener('click', function(e) {
 	var el = e.target;
@@ -36,8 +25,12 @@ list.addEventListener('click', function(e) {
 		else {
 			el.parentNode.style.textDecoration="line-through";
 		}
-
 	}
+	
+	else if (el.className === 'deleteButton') {
+		this.removeChild(el.parentNode);
+	}
+
 });
 
 
@@ -67,12 +60,14 @@ resetButton.onclick = function () {
 //save list to cookie
 saveButton.onclick = function () {
 	docCookies.setItem('saveCookie', document.getElementById("todoList").innerHTML);
+	inputText.focus();
 	
 }
 
 //load list to cookie
 loadButton.onclick = function () {
 	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
+	inputText.focus();
 
 }
 
@@ -100,6 +95,7 @@ function addNewItem(list, itemTextA) {
 	var listItem = document.createElement("li");
 	listItem.id = "list" + idCount;
 	listItem.className = "toDoEach";
+	listItem.draggable = "true";
 	var span = document.createElement('span');
 	listItem.appendChild(span);
 	span.textContent = itemTextA;
@@ -120,7 +116,6 @@ function addNewItem(list, itemTextA) {
 	var dragItem = document.createElement("img");
 	dragItem.id = "dragBut" + idCount;
 	dragItem.className = "dragButton";
-	listItem.draggable = "true";
 	dragItem.src ="./images/drag.png";
 
 	//put items into DOM
