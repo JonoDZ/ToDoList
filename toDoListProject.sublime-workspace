@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"id",
+				"idCount"
+			],
+			[
+				"board",
+				"border-radius"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"righ",
+				"padding-right"
+			],
+			[
+				"pad",
+				"padding-right"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
 				"save",
 				"saveCookie"
 			],
@@ -22,14 +50,6 @@
 			[
 				"on",
 				"onclick"
-			],
-			[
-				"margin",
-				"margin-top"
-			],
-			[
-				"board",
-				"border-top-left-radius"
 			],
 			[
 				"fon",
@@ -80,16 +100,8 @@
 				"imgItem"
 			],
 			[
-				"padd",
-				"padding-top"
-			],
-			[
 				"paddin",
 				"padding"
-			],
-			[
-				"font",
-				"font-style"
 			],
 			[
 				"sty",
@@ -132,10 +144,6 @@
 				"margin-right"
 			],
 			[
-				"id",
-				"id123"
-			],
-			[
 				"size",
 				"font-size"
 			],
@@ -175,7 +183,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 796,
+				"buffer_size": 808,
 				"line_ending": "Windows"
 			}
 		},
@@ -183,7 +191,7 @@
 			"file": "js/script.js",
 			"settings":
 			{
-				"buffer_size": 5685,
+				"buffer_size": 6031,
 				"line_ending": "Windows",
 				"name": "// each entry should look like this:"
 			}
@@ -192,7 +200,7 @@
 			"file": "css/styles.css",
 			"settings":
 			{
-				"buffer_size": 1634,
+				"buffer_size": 2042,
 				"line_ending": "Windows"
 			}
 		}
@@ -234,6 +242,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/jzac9_000/Desktop/wordpress extract/wordpress/wp-config.php",
 		"/C/Users/jzac9_000/Documents/work/Web Design/Levy/LevyPublish/www/index.html",
 		"/C/Users/jzac9_000/Documents/work/Web Design/Personal Projects/toDoList/index.html",
 		"/C/Users/jzac9_000/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
@@ -275,6 +284,8 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"itemTextA",
+			"padding",
 			"innerText",
 			"list",
 			"resetButton",
@@ -349,15 +360,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 796,
+						"buffer_size": 808,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								537,
-								537
+								674,
+								674
 							]
 						],
 						"settings":
@@ -370,7 +381,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
@@ -379,15 +390,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5685,
+						"buffer_size": 6031,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								972,
-								972
+								2808,
+								2808
 							]
 						],
 						"settings":
@@ -397,7 +408,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 270.0,
+						"translation.y": 1485.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -409,15 +420,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1634,
+						"buffer_size": 2042,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								691,
-								691
+								533,
+								533
 							]
 						],
 						"settings":
@@ -426,10 +437,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 675.0,
+						"translation.y": 180.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]

@@ -16,7 +16,7 @@ var list = document.getElementById("todoList");
 list.addEventListener('click', function(e) {
 	var el = e.target;
 	if (el.className === 'lineButton') {
-		// delete
+		// set style
 
 		if (el.parentNode.style.textDecoration === "line-through") {
 			el.parentNode.style.textDecoration="none";
@@ -31,7 +31,18 @@ list.addEventListener('click', function(e) {
 		this.removeChild(el.parentNode);
 	}
 
-});
+	//on click of Edit Button - switch item to Input box
+	else if (el.className === 'editToDoItem') {
+		var a = el.parentNode.childNodes[0];
+		var aText = a.getElementsByClassName("textSpan").textContent;
+		var b = document.createElement("input");
+		b.type = "text";
+		b.className = "toDoInput";
+		a.parentNode.replaceChild(b, a);
+		b.focus();
+	}
+
+});   
 
 
 
@@ -54,14 +65,12 @@ buttonNew.onclick = function ()
 //clear the list when clicking 'reset'
 resetButton.onclick = function () {
 		document.getElementById('todoList').innerHTML = "";
-		idCount = 0;
 		inputText.focus();
 }
 
 //save list to cookie
 saveButton.onclick = function () {
 	docCookies.setItem('saveCookie', document.getElementById("todoList").innerHTML);
-	docCookies.setItem('idCount', idCount)
 	inputText.focus();
 	
 }
@@ -69,7 +78,6 @@ saveButton.onclick = function () {
 //load list to cookie
 loadButton.onclick = function () {
 	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
-	idCount = docCookies.getItem('idCount');
 	inputText.focus();
 
 }
@@ -97,29 +105,26 @@ function addNewItem(list, itemTextA) {
 	
 	//create <Li> for the ToDo item
 	var listItem = document.createElement("li");
-	listItem.id = "list" + idCount;
 	listItem.className = "toDoEach";
 	listItem.draggable = "true";
 	var span = document.createElement('span');
 	listItem.appendChild(span);
+	span.className = "textSpan";
 	span.textContent = itemTextA;
 
 	//create delete <span>
 	var imgItem = document.createElement("span");
-	imgItem.id = "delBut" + idCount;
 	imgItem.className = "deleteButton";
 	imgItem.textContent ="X";
 
 	//create line-through <span>
 	var lineItem = document.createElement("span");
-	lineItem.id = "linBut" + idCount;
 	lineItem.className = "lineButton";
 	lineItem.textContent = "---";
 
 	//create drag button img
 	var dragItem = document.createElement("img");
-	dragItem.id = "dragBut" + idCount;
-	dragItem.className = "dragButton";
+	dragItem.className = "editToDoItem";
 	dragItem.src ="./images/drag.png";
 
 	//put <li> into DOM
@@ -129,12 +134,9 @@ function addNewItem(list, itemTextA) {
 	listItem.appendChild(imgItem);
 	listItem.appendChild(lineItem);
 	listItem.appendChild(dragItem);
-	
-	idCount++;
+
 };
 
-//used to increment ID's when creating DOM elements in function addNewItem()
-var idCount = 0;
 
 
 /*/////////////////
