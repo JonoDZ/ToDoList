@@ -123,9 +123,9 @@ function addNewItem(list, itemTextA) {
 	lineItem.textContent = "---";
 
 	//create drag button img
-	var dragItem = document.createElement("img");
-	dragItem.className = "editToDoItem";
-	dragItem.src ="./images/drag.png";
+	var editItem = document.createElement("img");
+	editItem.className = "editToDoItem";
+	editItem.src ="./images/edit.png";
 
 	//put <li> into DOM
 	list.appendChild(listItem);
@@ -133,7 +133,7 @@ function addNewItem(list, itemTextA) {
 	//put these into <li>
 	listItem.appendChild(imgItem);
 	listItem.appendChild(lineItem);
-	listItem.appendChild(dragItem);
+	listItem.appendChild(editItem);
 
 };
 
