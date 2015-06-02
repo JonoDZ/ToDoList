@@ -14,8 +14,8 @@ var list = document.getElementById("todoList");
 
 //cross out text on clicking '---'
 list.addEventListener('click', function(e) {
-	var el = e.target;
-	if (el.className === 'lineButton') {
+	var el = e.target.parentNode;
+	if (el.childNodes[0].className === 'lineButton') {
 		// set style
 
 		//add class to Item -- style through CSS TODO
@@ -28,12 +28,12 @@ list.addEventListener('click', function(e) {
 		}
 	}
 	
-	else if (el.className === 'deleteButton') {
+	else if (el.childNodes[0].className === 'deleteButton') {
 		this.removeChild(el.parentNode);
 	}
 
 	//on click of Edit Button - switch item to Input box
-	else if (el.className === 'editToDoItem') {
+	else if (el.childNodes[0].className === 'editToDoItem') {
 
 		// assign current list item
 		var a = el.parentNode.childNodes[0];
@@ -47,16 +47,21 @@ list.addEventListener('click', function(e) {
 		a.parentNode.replaceChild(b, a);
 		b.focus();
 
+
 		b.onkeyup = function(event)
 		{
+			
+
 			//On "Enter" - insert new text
 			if (event.which==13) {
+				
 				a.textContent = b.value;
 				b.parentNode.replaceChild(a, b);
 			}
 
 			//On "Esc" - insert old text
 			else if (event.which==27) {
+				
 				a.textContent = b.value;
 				b.parentNode.replaceChild(a, b);
 			}
@@ -146,25 +151,32 @@ function addNewItem(list, itemTextA) {
 	span.textContent = itemTextA;
 
 	//create delete <span>
-	var imgItem = document.createElement("span");
-	imgItem.className = "deleteButton";
-	imgItem.textContent ="X";
+	var delItem = document.createElement("a");
+	var delImg = document.createElement("img");
+	delImg.className = "deleteButton";
+	delImg.src = "./images/cross.png";
+	delItem.appendChild(delImg);
 
 	//create line-through <span>
-	var lineItem = document.createElement("span");
-	lineItem.className = "lineButton";
-	lineItem.textContent = "---";
+	var lineItem = document.createElement("a");
+	var lineImg =document.createElement("img");
+	lineImg.className = "lineButton";
+	lineImg.src = "./images/line.png";
+	lineItem.appendChild(lineImg);
+	
 
 	//create drag button img
-	var editItem = document.createElement("img");
-	editItem.className = "editToDoItem";
-	editItem.src ="./images/edit.png";
+	var editItem = document.createElement("a");
+	var editImg = document.createElement("img");
+	editImg.className = "editToDoItem";
+	editImg.src ="./images/edit.png";
+	editItem.appendChild(editImg);
 
 	//put <li> into DOM
 	list.appendChild(listItem);
 
 	//put these into <li>
-	listItem.appendChild(imgItem);
+	listItem.appendChild(delItem);
 	listItem.appendChild(lineItem);
 	listItem.appendChild(editItem);
 };
