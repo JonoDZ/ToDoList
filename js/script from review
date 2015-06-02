@@ -16,9 +16,11 @@ var list = document.getElementById("todoList");
 list.addEventListener('click', function(e) {
 	var el = e.target;
 	if (el.className === 'lineButton') {
-		// set style
+		// delete
 
-		//add class to Item -- style through CSS TODO
+
+			//add class to Item -- style through CSS
+
 		if (el.parentNode.style.textDecoration === "line-through") {
 			el.parentNode.style.textDecoration="none";
 		}
@@ -32,87 +34,47 @@ list.addEventListener('click', function(e) {
 		this.removeChild(el.parentNode);
 	}
 
-	//on click of Edit Button - switch item to Input box
-	else if (el.className === 'editToDoItem') {
-
-		// assign current list item
-		var a = el.parentNode.childNodes[0];
-
-		//create temp input box
-		var b = document.createElement("input");
-		b.type = "text";
-		b.className = "toDoInput";
-
-		//replace list item with input box
-		a.parentNode.replaceChild(b, a);
-		b.focus();
-
-		b.onkeyup = function(event)
-		{
-			//On "Enter" - insert new text
-			if (event.which==13) {
-				a.textContent = b.value;
-				b.parentNode.replaceChild(a, b);
-			}
-
-			//On "Esc" - insert old text
-			else if (event.which==27) {
-				a.textContent = b.value;
-				b.parentNode.replaceChild(a, b);
-			}
-		}
-
-		// execute when user leaves the input box
-		b.onblur = function (){
-
-			b.value = b.value.trim();
-
-			//use old text (no current value)
-			if (!b.value) {
-				b.parentNode.replaceChild(a, b);
-			}
-
-			//use new text
-			else {
-				a.textContent = b.value;
-				b.parentNode.replaceChild(a, b);
-			}
-		}
-	}
-	
-
-});   
+});
 
 
 
 //enter text when pressing enter
-inputText.onkeyup = function(event) {	// event.which 13 = ENTER
-	if(event.which == 13){	
+inputText.onkeyup = function(event)
+
+{	// event.which 13 = ENTER
+	if(event.which == 13)
+	{	
 		inputToToDo();
 	}
 }
 
 //enter text when clicking "add"
-buttonNew.onclick = function () {
-	inputToToDo();
-}
+buttonNew.onclick = function () 
+	{
+		inputToToDo();
+	}
 
 //clear the list when clicking 'reset'
 resetButton.onclick = function () {
 		document.getElementById('todoList').innerHTML = "";
+		idCount = 0;
 		inputText.focus();
 }
 
 //save list to cookie
 saveButton.onclick = function () {
 	docCookies.setItem('saveCookie', document.getElementById("todoList").innerHTML);
-	inputText.focus();	
+	docCookies.setItem('idCount', idCount)
+	inputText.focus();
+	
 }
 
 //load list to cookie
 loadButton.onclick = function () {
 	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
+	idCount = docCookies.getItem('idCount');
 	inputText.focus();
+
 }
 
 function inputToToDo () {
@@ -138,27 +100,30 @@ function addNewItem(list, itemTextA) {
 	
 	//create <Li> for the ToDo item
 	var listItem = document.createElement("li");
+	listItem.id = "list" + idCount;
 	listItem.className = "toDoEach";
 	listItem.draggable = "true";
 	var span = document.createElement('span');
 	listItem.appendChild(span);
-	span.className = "textSpan";
 	span.textContent = itemTextA;
 
 	//create delete <span>
 	var imgItem = document.createElement("span");
+	imgItem.id = "delBut" + idCount;
 	imgItem.className = "deleteButton";
 	imgItem.textContent ="X";
 
 	//create line-through <span>
 	var lineItem = document.createElement("span");
+	lineItem.id = "linBut" + idCount;
 	lineItem.className = "lineButton";
 	lineItem.textContent = "---";
 
 	//create drag button img
-	var editItem = document.createElement("img");
-	editItem.className = "editToDoItem";
-	editItem.src ="./images/edit.png";
+	var dragItem = document.createElement("img");
+	dragItem.id = "dragBut" + idCount;
+	dragItem.className = "dragButton";
+	dragItem.src ="./images/drag.png";
 
 	//put <li> into DOM
 	list.appendChild(listItem);
@@ -166,26 +131,38 @@ function addNewItem(list, itemTextA) {
 	//put these into <li>
 	listItem.appendChild(imgItem);
 	listItem.appendChild(lineItem);
-	listItem.appendChild(editItem);
+	listItem.appendChild(dragItem);
+	
+	idCount++;
 };
 
+//used to increment ID's when creating DOM elements in function addNewItem()
+var idCount = 0;
 
 
 /*/////////////////
 Frameworks and notes
 *//////////////////
 
-//garbage collection
-//accessability (img/a)
-//storage
+//garbage collection - remove references to be collected (eventlistener)
+//accessability (img/a) - over span
+	//Hide text from image
+	//Marwan link to article
+	//Keyboard only navigation
+	//reordering with only keyboard
+	//keybaord shortcuts / keyboard control (start here)
+	//blind - deaf
+	//aria roles - research intro
+
+//contenteditable - editing list items
 //dragging list order - DOM events - drag?
+//local storage over cookies (API)
+// remove ID - (look up data atribute)
+//books - you dont know JS
 
 /*
 done:
 	functionality
-		storage - in the form of cookies
-			save
-			load
 		line through - if statement under pre-existing eventlistener
 		reset button
 
