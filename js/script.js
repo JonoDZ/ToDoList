@@ -26,6 +26,15 @@ list.addEventListener('click', function(e) {
 		else {
 			el.parentNode.style.textDecoration="line-through";
 		}
+
+		/*
+				if (el.parentNode.className === "linethrough") {
+			el.parentNode.className="noLinethrough";
+		}
+
+		else if (el.parentNode.className === "noLinethrough") {
+			el.parentNode.className="linethrough";
+		*/
 	}
 	
 	else if (el.childNodes[0].className === 'deleteButton') {
@@ -33,7 +42,7 @@ list.addEventListener('click', function(e) {
 	}
 
 	//on click of Edit Button - switch item to Input box
-	else if (el.childNodes[0].className === 'editToDoItem') {
+	else if (el.childNodes[0].className === 'editButton') {
 
 		// assign current list item
 		var a = el.parentNode.childNodes[0];
@@ -162,45 +171,32 @@ function addNewItem(list, itemTextA) {
 	var delImg = document.createElement("img");
 	delImg.className = "deleteButton";
 	delItem.appendChild(delImg);
-	*/
 
 	var lineItem = document.createElement("a");
-	var lineImg =document.createElement("img");
-	lineImg.className = "lineButton";
+	var lineImg = document.createElement("img");
+	linImg.className = "lineButton";
 	lineItem.appendChild(lineImg);
 
-	createLiItem("del", listItem);
-
-
-	//create line-through <span>
-
-	
-
-	//create drag button img
 	var editItem = document.createElement("a");
 	var editImg = document.createElement("img");
-	editImg.className = "editToDoItem";
+	Img.className = "editButton";
 	editItem.appendChild(editImg);
+	*/
 
-
+	
+	//create List images
+	createLiItem("delete", listItem);
+	createLiItem("line", listItem);
+	createLiItem("edit", listItem);
 
 	function createLiItem (itemType, listItem) {
 		var anchorCreate = document.createElement("a");
 		var imgCreate = document.createElement("img");
 		imgCreate.className = itemType + "Button";
-
 		anchorCreate.appendChild(imgCreate);
 		listItem.appendChild(anchorCreate);
 	}
 
-
-
-	//put <li> into DOM
-
-	//put these into <li>
-	//listItem.appendChild(delItem);
-	listItem.appendChild(lineItem);
-	listItem.appendChild(editItem);
 };
 
 

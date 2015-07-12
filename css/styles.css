@@ -31,6 +31,14 @@ h1 {
 	border-radius: 5px;
 }
 
+.linethrough {
+	text-decoration: line-through;
+}
+
+.noLinethrough {
+	text-decoration: none;
+}
+
 #saveBut {
 	margin-right: 3px;
 	margin-left: 1px;
@@ -121,7 +129,7 @@ input {
 	background-image: url("../images/list/line.png");
 }
 
-.delButton {
+.deleteButton {
 	width: 41px;
 	height: 35px;
 	vertical-align: middle;
@@ -132,7 +140,7 @@ input {
 	background-image: url("../images/list/cross.png");
 }
 
-.editToDoItem {
+.editButton {
 	width: 35px;
 	height: 35px;
 	cursor: pointer;
