@@ -454,8 +454,8 @@
 						"selection":
 						[
 							[
-								1690,
-								1693
+								1974,
+								1974
 							]
 						],
 						"settings":
@@ -465,7 +465,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 529.0,
+						"translation.y": 151.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -526,7 +526,8 @@
 						"settings":
 						{
 							"auto_name": "// each entry should look like this:",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

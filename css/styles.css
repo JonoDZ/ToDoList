@@ -96,10 +96,11 @@ input {
 }
 
 .textSpan {
-
-	padding-top: -10px;
-	margin-top: -20px;
-	font-size: 30px;
+	display: inline-block;
+	top:0;
+	height: 35px;
+	font-size: 28px;
+	vertical-align: top;
 }
 
 .toDoInput {
@@ -111,27 +112,34 @@ input {
 .lineButton {
 	width: 42px;
 	height: 35px;
-	font-size: 30px;
-	text-align: center;
 	vertical-align: middle;
 	float: right;
 	cursor: pointer;
 	border-bottom-left-radius: 5px;
 	border-top-left-radius: 5px;
 	background-color: #ff9932;
+	background-image: url("../images/list/line.png");
 }
 
-.deleteButton {
+.delButton {
 	width: 41px;
 	height: 35px;
-	font-size: 30px;
-	text-align: center;
 	vertical-align: middle;
 	float: right;
 	cursor: pointer;
 	border-bottom-right-radius: 5px;
 	border-top-right-radius: 5px;
-	background-color: #ff3838;
+	background-image: url("../images/list/cross.png");
+}
+
+.editToDoItem {
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	border-bottom-right-radius: 5px;
+	border-top-right-radius: 5px;
+	background-image: url("../images/list/edit.png");
+}
 }
 
 .dragButton {

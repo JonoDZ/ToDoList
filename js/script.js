@@ -138,6 +138,9 @@ function inputToToDo () {
 	inputText.focus();
 };
 
+
+
+
 //creates various DOM elements
 function addNewItem(list, itemTextA) {
 	
@@ -151,35 +154,55 @@ function addNewItem(list, itemTextA) {
 	span.textContent = itemTextA;
 
 	//create delete <span>
+
+	list.appendChild(listItem);
+
+	/*
 	var delItem = document.createElement("a");
 	var delImg = document.createElement("img");
 	delImg.className = "deleteButton";
-	delImg.src = "./images/cross.png";
 	delItem.appendChild(delImg);
+	*/
 
-	//create line-through <span>
 	var lineItem = document.createElement("a");
 	var lineImg =document.createElement("img");
 	lineImg.className = "lineButton";
-	lineImg.src = "./images/line.png";
 	lineItem.appendChild(lineImg);
+
+	createLiItem("del", listItem);
+
+
+	//create line-through <span>
+
 	
 
 	//create drag button img
 	var editItem = document.createElement("a");
 	var editImg = document.createElement("img");
 	editImg.className = "editToDoItem";
-	editImg.src ="./images/edit.png";
 	editItem.appendChild(editImg);
 
+
+
+	function createLiItem (itemType, listItem) {
+		var anchorCreate = document.createElement("a");
+		var imgCreate = document.createElement("img");
+		imgCreate.className = itemType + "Button";
+
+		anchorCreate.appendChild(imgCreate);
+		listItem.appendChild(anchorCreate);
+	}
+
+
+
 	//put <li> into DOM
-	list.appendChild(listItem);
 
 	//put these into <li>
-	listItem.appendChild(delItem);
+	//listItem.appendChild(delItem);
 	listItem.appendChild(lineItem);
 	listItem.appendChild(editItem);
 };
+
 
 
 
