@@ -8,196 +8,226 @@ var buttonNew = document.getElementById('buttonAdd');
 var saveButton = document.getElementById('saveBut');
 var loadButton = document.getElementById('loadBut');
 var resetButton = document.getElementById('resetBut');
-var deleteClick = document.getElementsByClassName('deleteButton');
 var list = document.getElementById("todoList");
 
 
-//cross out text on clicking '---'
-list.addEventListener('click', function(e) {
-	var el = e.target.parentNode;
-	if (el.childNodes[0].className === 'lineButton') {
-		// set style
+//listen for Clicks on list item buttons
+	list.addEventListener('click', function(e) {
+		var el = e.target.parentNode;
 
-		//add class to Item -- style through CSS TODO
-		if (el.parentNode.style.textDecoration === "line-through") {
-			el.parentNode.style.textDecoration="none";
-		}
-
-		else {
-			el.parentNode.style.textDecoration="line-through";
-		}
-
-		/*
-				if (el.parentNode.className === "linethrough") {
-			el.parentNode.className="noLinethrough";
-		}
-
-		else if (el.parentNode.className === "noLinethrough") {
-			el.parentNode.className="linethrough";
-		*/
-	}
-	
-	else if (el.childNodes[0].className === 'deleteButton') {
-		this.removeChild(el.parentNode);
-	}
-
-	//on click of Edit Button - switch item to Input box
-	else if (el.childNodes[0].className === 'editButton') {
-
-		// assign current list item
-		var a = el.parentNode.childNodes[0];
-
-		//create temp input box
-		var b = document.createElement("input");
-		b.type = "text";
-		b.className = "toDoInput";
-
-		//replace list item with input box
-		a.parentNode.replaceChild(b, a);
-		b.focus();
-
-
-		b.onkeyup = function(event)
-		{
+		//Cross' out text if lineButton is clicked 
+		if (el.childNodes[0].className === 'lineButton') {
 			
+/*
+//--		//ITERATION 1
+			
+					if (el.parentNode.style.textDecoration === "line-through") {
+						el.parentNode.style.textDecoration="none";
+					}
 
-			//On "Enter" - insert new text
-			if (event.which==13) {
-				
-				a.textContent = b.value;
-				b.parentNode.replaceChild(a, b);
+					else {
+						el.parentNode.style.textDecoration="line-through";
+					}
+					
+			//advised to control through CSS Classes, as opposed to directly setting CSS Rules.
+
+//--		//ITERATION 2
+
+						if (el.parentNode.childNodes[0].className === "textSpan noLinethrough") {
+						el.parentNode.childNodes[0].className = "textSpan linethrough";
+					}
+
+					else if (el.parentNode.childNodes[0].className === "textSpan linethrough") {
+						el.parentNode.childNodes[0].className="textSpan noLinethrough";
+					}
+					
+*/
+			//iteration 2 required a specific string from .className, would cause issues when adding extra classes in
+
+			//ITERATION 3
+
+			//store className as string
+			var textClassName = el.parentNode.childNodes[0].className;
+
+			//search for "lineThrough" in all CSS class' applied to element
+			var searchResultsLineThrough = textClassName.search("linethrough");
+
+			//if lineThrough Class is present
+			if (searchResultsLineThrough != -1) {
+				el.parentNode.childNodes[0].className = textClassName.replace("linethrough", "noLinethrough");
 			}
 
-			//On "Esc" - insert old text
-			else if (event.which==27) {
-				
-				a.textContent = b.value;
-				b.parentNode.replaceChild(a, b);
+			//if lineThrough Class is not present
+			else if (searchResultsLineThrough = -1) {
+				el.parentNode.childNodes[0].className = textClassName.replace("noLinethrough", "linethrough");
 			}
+
+		}
+		
+		//Delete list item, on click of the delete button
+		else if (el.childNodes[0].className === 'deleteButton') {
+			this.removeChild(el.parentNode);
 		}
 
-		// execute when user leaves the input box
-		b.onblur = function (){
+		//on click of Edit Button - switch list item text to an Input box
+		else if (el.childNodes[0].className === 'editButton') {
 
-			b.value = b.value.trim();
+			// assign current list item
+			var a = el.parentNode.childNodes[0];
 
-			//use old text (no current value)
-			if (!b.value) {
-				b.parentNode.replaceChild(a, b);
+			//create temp input box
+			var b = document.createElement("input");
+			b.type = "text";
+			b.className = "toDoInput";
+
+			//replace list item with input box
+			a.parentNode.replaceChild(b, a);
+			b.focus();
+
+
+			b.onkeyup = function(event)
+			{
+				
+				//On "Enter" - insert new text
+				if (event.which==13) {
+					
+					a.textContent = b.value;
+					b.parentNode.replaceChild(a, b);
+				}
+
+				//On "Esc" - insert old text
+				else if (event.which==27) {
+					
+					a.textContent = b.value;
+					b.parentNode.replaceChild(a, b);
+				}
 			}
 
-			//use new text
-			else {
-				a.textContent = b.value;
-				b.parentNode.replaceChild(a, b);
-			}
-		}
-	}
-	
+			// execute when user leaves the input box
+			b.onblur = function (){
 
-});   
+				b.value = b.value.trim();
 
+				//use old text (no current value)
+				if (!b.value) {
+					b.parentNode.replaceChild(a, b);
+				}
 
+				//use new text
+				else {
+					a.textContent = b.value;
+					b.parentNode.replaceChild(a, b);
+				}
+			} //end onblur
+		} //end else if for 'editButton' onclick event
+	}); //end entire onclick listener event   
 
 //enter text when pressing enter
-inputText.onkeyup = function(event) {	// event.which 13 = ENTER
-	if(event.which == 13){	
-		inputToToDo();
+	inputText.onkeyup = function(event) {	// event.which 13 = ENTER
+		if(event.which == 13){	
+			inputToToDo();
+		}
 	}
-}
 
 //enter text when clicking "add"
-buttonNew.onclick = function () {
-	inputToToDo();
-}
-
-//clear the list when clicking 'reset'
-resetButton.onclick = function () {
-		document.getElementById('todoList').innerHTML = "";
-		inputText.focus();
-}
-
-//save list to cookie
-saveButton.onclick = function () {
-	docCookies.setItem('saveCookie', document.getElementById("todoList").innerHTML);
-	inputText.focus();	
-}
-
-//load list to cookie
-loadButton.onclick = function () {
-	document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
-	inputText.focus();
-}
-
-function inputToToDo () {
-
-	var inputText = document.getElementById("inputText");
-	var itemText = inputText.value.trim();
-
-	if (!itemText) 
-	{
-		document.getElementById("inputText").value	= "";
-		inputText.focus();
-		return false;
-	};
-
-	addNewItem(list, itemText);
-	
-	document.getElementById("inputText").value	= "";
-	inputText.focus();
-};
-
-
-
-
-//creates various DOM elements
-function addNewItem(list, itemTextA) {
-	
-	//create <Li> for the ToDo item
-	var listItem = document.createElement("li");
-	listItem.className = "toDoEach";
-	listItem.draggable = "true";
-	var span = document.createElement('span');
-	listItem.appendChild(span);
-	span.className = "textSpan";
-	span.textContent = itemTextA;
-
-	//create delete <span>
-
-	list.appendChild(listItem);
-
-	/*
-	var delItem = document.createElement("a");
-	var delImg = document.createElement("img");
-	delImg.className = "deleteButton";
-	delItem.appendChild(delImg);
-
-	var lineItem = document.createElement("a");
-	var lineImg = document.createElement("img");
-	linImg.className = "lineButton";
-	lineItem.appendChild(lineImg);
-
-	var editItem = document.createElement("a");
-	var editImg = document.createElement("img");
-	Img.className = "editButton";
-	editItem.appendChild(editImg);
-	*/
-
-	
-	//create List images
-	createLiItem("delete", listItem);
-	createLiItem("line", listItem);
-	createLiItem("edit", listItem);
-
-	function createLiItem (itemType, listItem) {
-		var anchorCreate = document.createElement("a");
-		var imgCreate = document.createElement("img");
-		imgCreate.className = itemType + "Button";
-		anchorCreate.appendChild(imgCreate);
-		listItem.appendChild(anchorCreate);
+	buttonNew.onclick = function () {
+		inputToToDo();
 	}
 
-};
+
+//reset/save/load on click of relavent buttons
+	resetButton.onclick = function () {
+			document.getElementById('todoList').innerHTML = "";
+			inputText.focus();
+	}
+
+	saveButton.onclick = function () {
+		docCookies.setItem('saveCookie', document.getElementById("todoList").innerHTML);
+		inputText.focus();	
+	}
+
+	loadButton.onclick = function () {
+		document.getElementById("todoList").innerHTML = docCookies.getItem('saveCookie');
+		inputText.focus();
+	}
+
+//take text in input box, convert to todo item.
+	function inputToToDo () {
+
+		//get text from input box
+		var inputText = document.getElementById("inputText");
+		var itemText = inputText.value.trim();
+
+		if (!itemText) 
+		{
+			document.getElementById("inputText").value	= "";
+			inputText.focus();
+			return false;
+		};
+
+//--	// why not:
+		/* 
+		else {
+			addNewItem(list, itemText);
+			document.getElementById("inputText").value	= "";
+			inputText.focus();
+		}
+		*/
+
+		addNewItem(list, itemText);
+		document.getElementById("inputText").value	= "";
+		inputText.focus();
+	};
+
+
+//creates List elements, adds to DOM
+	function addNewItem(list, itemTextA) {
+		
+		//create <Li> for the ToDo item
+		var listItem = document.createElement("li");
+		listItem.className = "toDoEach";
+		listItem.draggable = "true";
+		var span = document.createElement('span');
+		listItem.appendChild(span);
+//--	span.className = "textSpan noLinethrough";
+		span.className = "textSpan" + " " + "noLinethrough";
+		span.textContent = itemTextA;
+
+		//create delete <span>
+
+		list.appendChild(listItem);
+
+		/*
+		var delItem = document.createElement("a");
+		var delImg = document.createElement("img");
+		delImg.className = "deleteButton";
+		delItem.appendChild(delImg);
+
+		var lineItem = document.createElement("a");
+		var lineImg = document.createElement("img");
+		linImg.className = "lineButton";
+		lineItem.appendChild(lineImg);
+
+		var editItem = document.createElement("a");
+		var editImg = document.createElement("img");
+		Img.className = "editButton";
+		editItem.appendChild(editImg);
+		*/
+
+		
+//--	//create ToDo List Buttons
+		createListItemButton("delete");
+		createListItemButton("line");
+		createListItemButton("edit");
+
+		function createListItemButton (buttonName) {
+			var anchorElement = document.createElement("a");
+			var imgElement = document.createElement("img");
+			imgElement.className = buttonName + "Button";
+			anchorElement.appendChild(imgElement);
+			listItem.appendChild(anchorElement);
+		}
+	};
 
 
 
