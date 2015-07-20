@@ -1,0 +1,9 @@
+/////////// 
+///Notes///
+
+to Do:
+- garbage collection
+- accessability (img/a) - keyboard controls
+- storage outside of cookies
+- dragging list order - DOM events - drag?
+- ability to create multiple lists

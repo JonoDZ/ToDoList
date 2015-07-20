@@ -2,7 +2,7 @@
 // 	<li><input type="checkbox"/> Test me please </li>
 //
 
-
+//ensure inputBox is focused on when page loads
 inputText.focus();
 var buttonNew = document.getElementById('buttonAdd');
 var saveButton = document.getElementById('saveBut');
@@ -17,106 +17,81 @@ var list = document.getElementById("todoList");
 
 		//Cross' out text if lineButton is clicked 
 		if (el.childNodes[0].className === 'lineButton') {
-			
-/*
-//--		//ITERATION 1
-			
-					if (el.parentNode.style.textDecoration === "line-through") {
-						el.parentNode.style.textDecoration="none";
-					}
 
-					else {
-						el.parentNode.style.textDecoration="line-through";
-					}
-					
-			//advised to control through CSS Classes, as opposed to directly setting CSS Rules.
-
-//--		//ITERATION 2
-
-						if (el.parentNode.childNodes[0].className === "textSpan noLinethrough") {
-						el.parentNode.childNodes[0].className = "textSpan linethrough";
-					}
-
-					else if (el.parentNode.childNodes[0].className === "textSpan linethrough") {
-						el.parentNode.childNodes[0].className="textSpan noLinethrough";
-					}
-					
-*/
-			//iteration 2 required a specific string from .className, would cause issues when adding extra classes in
-
-			//ITERATION 3
-
-			//store className as string
+			//store the text's className as string
 			var textClassName = el.parentNode.childNodes[0].className;
 
-			//search for "lineThrough" in all CSS class' applied to element
+			//search for "lineThrough" class against current class', store results
 			var searchResultsLineThrough = textClassName.search("linethrough");
 
-			//if lineThrough Class is present
+			//if lineThrough Class is present in search results
 			if (searchResultsLineThrough != -1) {
+				//remove the lineThrough Class, apply noLineThrough Class
 				el.parentNode.childNodes[0].className = textClassName.replace("linethrough", "noLinethrough");
 			}
 
-			//if lineThrough Class is not present
+			//if lineThrough Class is not present in search results
 			else if (searchResultsLineThrough = -1) {
+				//remove the noLineThrough Class, apply lineThrough Class
 				el.parentNode.childNodes[0].className = textClassName.replace("noLinethrough", "linethrough");
 			}
 
 		}
 		
-		//Delete list item, on click of the delete button
+		//when the delete button is clicked:
 		else if (el.childNodes[0].className === 'deleteButton') {
+			//remove toDoList item
 			this.removeChild(el.parentNode);
 		}
 
-		//on click of Edit Button - switch list item text to an Input box
+		//when the delete button is clicked: switch the toDo list text to an Input box
 		else if (el.childNodes[0].className === 'editButton') {
 
 			// assign current list item
-			var a = el.parentNode.childNodes[0];
+			var currentLiText = el.parentNode.childNodes[0];
 
-			//create temp input box
-			var b = document.createElement("input");
-			b.type = "text";
-			b.className = "toDoInput";
+			//create the temporary input box
+			var tempLiInputBox = document.createElement("input");
+			tempLiInputBox.type = "text";
+			tempLiInputBox.className = "toDoInput";
 
-			//replace list item with input box
-			a.parentNode.replaceChild(b, a);
-			b.focus();
+			//replace the toDoList item with the temporary input box
+			currentLiText.parentNode.replaceChild(tempLiInputBox, currentLiText);
+			tempLiInputBox.focus();
 
-
-			b.onkeyup = function(event)
+			//when user takes the following actions on the temporary input box
+			tempLiInputBox.onkeyup = function(event)
 			{
 				
 				//On "Enter" - insert new text
 				if (event.which==13) {
 					
-					a.textContent = b.value;
-					b.parentNode.replaceChild(a, b);
+					currentLiText.textContent = tempLiInputBox.value;
+					tempLiInputBox.parentNode.replaceChild(currentLiText, tempLiInputBox);
 				}
 
 				//On "Esc" - insert old text
 				else if (event.which==27) {
 					
-					a.textContent = b.value;
-					b.parentNode.replaceChild(a, b);
+					currentLiText.textContent = tempLiInputBox.value;
+					tempLiInputBox.parentNode.replaceChild(currentLiText, tempLiInputBox);
 				}
 			}
 
 			// execute when user leaves the input box
-			b.onblur = function (){
+			tempLiInputBox.onblur = function (){
 
-				b.value = b.value.trim();
+				tempLiInputBox.value = tempLiInputBox.value.trim();
 
 				//use old text (no current value)
-				if (!b.value) {
-					b.parentNode.replaceChild(a, b);
+				if (!tempLiInputBox.value) {
+					tempLiInputBox.parentNode.replaceChild(currentLiText, tempLiInputBox);
 				}
 
 				//use new text
 				else {
-					a.textContent = b.value;
-					b.parentNode.replaceChild(a, b);
+					currentLiText.textContent = tempLiInputBox.value;
+					tempLiInputBox.parentNode.replaceChild(currentLiText, tempLiInputBox);
 				}
 			} //end onblur
 		} //end else if for 'editButton' onclick event
@@ -154,10 +129,11 @@ var list = document.getElementById("todoList");
 //take text in input box, convert to todo item.
 	function inputToToDo () {
 
-		//get text from input box
+		//get text from input box and trim white space.
 		var inputText = document.getElementById("inputText");
 		var itemText = inputText.value.trim();
 
+		//stops the function if there is no input text.
 		if (!itemText) 
 		{
 			document.getElementById("inputText").value	= "";
@@ -165,22 +141,14 @@ var list = document.getElementById("todoList");
 			return false;
 		};
 
-//--	// why not:
-		/* 
-		else {
-			addNewItem(list, itemText);
-			document.getElementById("inputText").value	= "";
-			inputText.focus();
-		}
-		*/
-
+		//pass input text into function that creates all toDoList elements, and 
+		//inserts them into the DOM
 		addNewItem(list, itemText);
 		document.getElementById("inputText").value	= "";
 		inputText.focus();
 	};
 
-
-//creates List elements, adds to DOM
+	 //creates toDoList elements, then adds them to DOM
 	function addNewItem(list, itemTextA) {
 		
 		//create <Li> for the ToDo item
@@ -189,38 +157,20 @@ var list = document.getElementById("todoList");
 		listItem.draggable = "true";
 		var span = document.createElement('span');
 		listItem.appendChild(span);
-//--	span.className = "textSpan noLinethrough";
+
+		//set initial text to not be crossed out
 		span.className = "textSpan" + " " + "noLinethrough";
 		span.textContent = itemTextA;
 
-		//create delete <span>
-
 		list.appendChild(listItem);
-
-		/*
-		var delItem = document.createElement("a");
-		var delImg = document.createElement("img");
-		delImg.className = "deleteButton";
-		delItem.appendChild(delImg);
-
-		var lineItem = document.createElement("a");
-		var lineImg = document.createElement("img");
-		linImg.className = "lineButton";
-		lineItem.appendChild(lineImg);
-
-		var editItem = document.createElement("a");
-		var editImg = document.createElement("img");
-		Img.className = "editButton";
-		editItem.appendChild(editImg);
-		*/
-
 		
-//--	//create ToDo List Buttons
-		createListItemButton("delete");
-		createListItemButton("line");
-		createListItemButton("edit");
+		//create ToDo List Buttons
+		createToDoItemButton("delete");
+		createToDoItemButton("line");
+		createToDoItemButton("edit");
 
-		function createListItemButton (buttonName) {
+
+		function createToDoItemButton (buttonName) {
 			var anchorElement = document.createElement("a");
 			var imgElement = document.createElement("img");
 			imgElement.className = buttonName + "Button";
@@ -230,30 +180,9 @@ var list = document.getElementById("todoList");
 	};
 
 
+//below framework to be removed once a suitable alternatative to cookie storage is found. 
 
-
-/*/////////////////
-Frameworks and notes
-*//////////////////
-
-//garbage collection
-//accessability (img/a)
-//storage
-//dragging list order - DOM events - drag?
-
-/*
-done:
-	functionality
-		storage - in the form of cookies
-			save
-			load
-		line through - if statement under pre-existing eventlistener
-		reset button
-
-
-
-
-/*\
+/*\    
 |*|
 |*|  :: cookies.js ::
 |*|
