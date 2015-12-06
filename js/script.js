@@ -47,6 +47,9 @@ var list = document.getElementById("todoList");
 		//when the delete button is clicked: switch the toDo list text to an Input box
 		else if (el.childNodes[0].className === 'editButton') {
 
+			//assign entire current list entry
+			var currentLiItem = el.parentNode;
+
 			// assign current list item
 			var currentLiText = el.parentNode.childNodes[0];
 
@@ -57,6 +60,14 @@ var list = document.getElementById("todoList");
 
 			//replace the toDoList item with the temporary input box
 			currentLiText.parentNode.replaceChild(tempLiInputBox, currentLiText);
+
+			//remove the edit button
+			el.removeChild(el.childNodes[0]);
+
+			//insert confirm and cancel buttons
+			createToDoItemButton('confirmChange', el.parentElement);
+			createToDoItemButton('cancelChange', el.parentElement);
+
 			tempLiInputBox.focus();
 
 			//when user takes the following actions on the temporary input box
@@ -67,7 +78,9 @@ var list = document.getElementById("todoList");
 				if (event.which==13) {
 					
 					currentLiText.textContent = tempLiInputBox.value;
-					tempLiInputBox.parentNode.replaceChild(currentLiText, tempLiInputBox);
+					currentLiItem.parentNode.removeChild(currentLiItem);
+
+					addNewItem(list, currentLiText.innerText)
 				}
 
 				//On "Esc" - insert old text
@@ -78,22 +91,6 @@ var list = document.getElementById("todoList");
 				}
 			}
 
-			// execute when user leaves the input box
-			tempLiInputBox.onblur = function (){
-
-				tempLiInputBox.value = tempLiInputBox.value.trim();
-
-				//use old text (no current value)
-				if (!tempLiInputBox.value) {
-					tempLiInputBox.parentNode.replaceChild(currentLiText, tempLiInputBox);
-				}
-
-				//use new text
-				else {
-					currentLiText.textContent = tempLiInputBox.value;
-					tempLiInputBox.parentNode.replaceChild(currentLiText, tempLiInputBox);
-				}
-			} //end onblur
 		} //end else if for 'editButton' onclick event
 	}); //end entire onclick listener event   
 
@@ -165,18 +162,18 @@ var list = document.getElementById("todoList");
 		list.appendChild(listItem);
 		
 		//create ToDo List Buttons
-		createToDoItemButton("delete");
-		createToDoItemButton("line");
-		createToDoItemButton("edit");
+		createToDoItemButton("delete", listItem);
+		createToDoItemButton("line", listItem);
+		createToDoItemButton("edit", listItem);
 
+	};
 
-		function createToDoItemButton (buttonName) {
-			var anchorElement = document.createElement("a");
-			var imgElement = document.createElement("img");
-			imgElement.className = buttonName + "Button";
-			anchorElement.appendChild(imgElement);
-			listItem.appendChild(anchorElement);
-		}
+	function createToDoItemButton (buttonName, listItem) {
+		var anchorElement = document.createElement("a");
+		var imgElement = document.createElement("img");
+		imgElement.className = buttonName + "Button";
+		anchorElement.appendChild(imgElement);
+		listItem.appendChild(anchorElement);
 	};
 
 

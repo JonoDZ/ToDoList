@@ -148,6 +148,28 @@ input {
 	border-top-right-radius: 5px;
 	background-image: url("../images/list/edit.png");
 }
+
+.confirmChangeButton {
+	width: 42px;
+	height: 35px;
+	vertical-align: middle;
+	float:left;
+	cursor: pointer;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	background-color: #ff9932;
+	background-image: url("../images/list/tick.png");
+}
+
+.cancelChangeButton {
+	width: 42px;
+	height: 35px;
+	vertical-align: middle;
+	cursor: pointer;
+	border-bottom-left-radius: 5px;
+	border-top-left-radius: 5px;
+	background-color: #ff9932;
+	background-image: url("../images/list/return.png");
 }
 
 .dragButton {
