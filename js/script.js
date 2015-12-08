@@ -50,8 +50,8 @@ var list = document.getElementById("todoList");
 			//assign entire current list entry
 			var currentLiItem = el.parentNode;
 
-			// assign current list item
-			var currentLiText = el.parentNode.childNodes[0];
+			// assign current list item Text
+			var currentLiText = currentLiItem.childNodes[0];
 
 			//create the temporary input box
 			var tempLiInputBox = document.createElement("input");
@@ -59,14 +59,14 @@ var list = document.getElementById("todoList");
 			tempLiInputBox.className = "toDoInput";
 
 			//replace the toDoList item with the temporary input box
-			currentLiText.parentNode.replaceChild(tempLiInputBox, currentLiText);
+			currentLiItem.replaceChild(tempLiInputBox, currentLiText);
 
 			//remove the edit button
 			el.removeChild(el.childNodes[0]);
 
 			//insert confirm and cancel buttons
-			createToDoItemButton('confirmChange', el.parentElement);
-			createToDoItemButton('cancelChange', el.parentElement);
+			createToDoItemButton('confirmChange', currentLiItem);
+			createToDoItemButton('cancelChange', currentLiItem);
 
 			tempLiInputBox.focus();
 
@@ -78,16 +78,15 @@ var list = document.getElementById("todoList");
 				if (event.which==13) {
 					
 					currentLiText.textContent = tempLiInputBox.value;
-					currentLiItem.parentNode.removeChild(currentLiItem);
-
-					addNewItem(list, currentLiText.innerText)
+					list.removeChild(currentLiItem);
+					addNewItem(list, currentLiText.innerText);
 				}
 
 				//On "Esc" - insert old text
 				else if (event.which==27) {
 					
-					currentLiText.textContent = tempLiInputBox.value;
-					tempLiInputBox.parentNode.replaceChild(currentLiText, tempLiInputBox);
+					list.removeChild(currentLiItem);
+					addNewItem(list, currentLiText.innerText);
 				}
 			}
 
