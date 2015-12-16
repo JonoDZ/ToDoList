@@ -38,7 +38,6 @@ var list = document.getElementById("todoList");
 				//remove the noLineThrough Class, apply lineThrough Class
 				currentLiItem.childNodes[0].className = textClassName.replace("noLinethrough", "linethrough");
 			}
-
 		}
 		
 		//when the delete button is clicked:
@@ -92,7 +91,6 @@ var list = document.getElementById("todoList");
 					addNewItem(list, currentLiText.innerText);
 				}
 			}
-
 		} //end else if for 'editButton' onclick event
 	}); //end entire onclick listener event   
 
