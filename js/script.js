@@ -49,7 +49,7 @@ var list = document.getElementById("todoList");
 		//when the delete button is clicked: switch the toDo list text to an Input box
 		else if (el.childNodes[0].className === 'editButton') {
 
-			//assign entire current list entry
+			//assign current list entry
 			var currentLiItem = el.parentNode;
 
 			// assign current list item Text
@@ -64,7 +64,7 @@ var list = document.getElementById("todoList");
 			currentLiItem.replaceChild(tempLiInputBox, currentLiText);
 
 			//remove the edit button
-			el.removeChild(el.childNodes[0]);
+			currentLiItem.removeChild(el);
 
 			//insert confirm and cancel buttons
 			createToDoItemButton('confirmChange', currentLiItem);
