@@ -79,9 +79,22 @@ var list = document.getElementById("todoList");
 				//On "Enter" - insert new text
 				if (event.which==13) {
 					
+					//remove tick/return boxes
+					currentLiItem.removeChild(currentLiItem.childNodes[4])
+					currentLiItem.removeChild(currentLiItem.childNodes[3])
+
+					//recreate edit box
+					createToDoItemButton("edit", currentLiItem);
+
+					//store new text, ready to be inserted
 					currentLiText.textContent = tempLiInputBox.value;
-					list.removeChild(currentLiItem);
-					addNewItem(list, currentLiText.innerText);
+
+					//insert new next into the list
+					currentLiItem.replaceChild(currentLiText, tempLiInputBox);
+
+
+					
+
 				}
 
 				//On "Esc" - insert old text
