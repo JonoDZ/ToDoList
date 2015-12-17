@@ -34,45 +34,21 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 
 
 */
+			currentLiItem.childNodes[0].classList.toggle("linethrough");
 
-			//store the text's className as string
-			var textClassName = currentLiItem.childNodes[0].className;
-
-			//search for "lineThrough" class against current class', store results
-			var searchResultsLineThrough = textClassName.search("linethrough");
-
-			//if lineThrough Class is present in search results
-			if (searchResultsLineThrough != -1) {
-				//remove the lineThrough Class, apply noLineThrough Class
-
-					//
-					//switch to class toggle function - check 'states'
-					//- can remove 'states' without any default changes
-					//
-				currentLiItem.childNodes[0].className = textClassName.replace("linethrough", "noLinethrough");
-
-					//^^^ currentliitem, change to pass item into this, in order to delcare at a higher level 
-					// classlist.toggle
-			}
-
-			//if lineThrough Class is not present in search results
-			else if (searchResultsLineThrough = -1) {
-				//remove the noLineThrough Class, apply lineThrough Class
-				currentLiItem.childNodes[0].className = textClassName.replace("noLinethrough", "linethrough");
-			}
 		}
 		
 		//when the delete button is clicked:
 		else if (el.childNodes[0].className === 'deleteButton') {
 			//remove toDoList item
-			this.removeChild(el.parentNode);
+			this.removeChild(currentLiItem);
 		}
 
 		//when the delete button is clicked: switch the toDo list text to an Input box
 		else if (el.childNodes[0].className === 'editButton') {
 
 			//assign current list entry
-			var currentLiItem = el.parentNode;
+			var currentLiItem = currentLiItem;
 
 			// assign current list item Text
 			var currentLiText = currentLiItem.childNodes[0];
@@ -119,21 +95,17 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 				//On "Esc" - insert old text
 				else if (event.which==27) {
 					
-				/*	//remove tick/return boxes
+				//remove tick/return boxes
 					currentLiItem.removeChild(currentLiItem.childNodes[4])
 					currentLiItem.removeChild(currentLiItem.childNodes[3])
 
 					//recreate edit box
 					createToDoItemButton("edit", currentLiItem);
 
-					//store new text, ready to be inserted
-					currentLiText.textContent = tempLiInputBox.value;
-
 					//insert new next into the list
 					currentLiItem.replaceChild(currentLiText, tempLiInputBox);	
-				*/
-					list.removeChild(currentLiItem);
-					addNewItem(list, currentLiText.innerText);
+				
+
 				}
 			}
 		} //end else if for 'editButton' onclick event
@@ -207,7 +179,7 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 		listItem.appendChild(span);
 
 		//set initial text to not be crossed out
-		span.className = "textSpan" + " " + "noLinethrough";
+		span.className = "textSpan";
 		span.textContent = itemTextA;
 
 		list.appendChild(listItem);
