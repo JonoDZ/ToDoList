@@ -20,6 +20,20 @@ var list = document.getElementById("todoList");
 
 			//assign entire current list entry
 			var currentLiItem = el.parentNode;
+					//watch for click on parent
+					// - google deffering a click event / bubbling
+					//
+
+/*
+	toggle class on tick/return to change hidden class.
+-line through to become “completed” Class
+
+editing class for line through/ticked - use to hide/show all aspects of editing
+
+- elements.classlist
+
+
+*/
 
 			//store the text's className as string
 			var textClassName = currentLiItem.childNodes[0].className;
@@ -30,7 +44,15 @@ var list = document.getElementById("todoList");
 			//if lineThrough Class is present in search results
 			if (searchResultsLineThrough != -1) {
 				//remove the lineThrough Class, apply noLineThrough Class
+
+					//
+					//switch to class toggle function - check 'states'
+					//- can remove 'states' without any default changes
+					//
 				currentLiItem.childNodes[0].className = textClassName.replace("linethrough", "noLinethrough");
+
+					//^^^ currentliitem, change to pass item into this, in order to delcare at a higher level 
+					// classlist.toggle
 			}
 
 			//if lineThrough Class is not present in search results
@@ -90,16 +112,26 @@ var list = document.getElementById("todoList");
 					currentLiText.textContent = tempLiInputBox.value;
 
 					//insert new next into the list
-					currentLiItem.replaceChild(currentLiText, tempLiInputBox);
-
-
-					
+					currentLiItem.replaceChild(currentLiText, tempLiInputBox);	
 
 				}
 
 				//On "Esc" - insert old text
 				else if (event.which==27) {
 					
+				/*	//remove tick/return boxes
+					currentLiItem.removeChild(currentLiItem.childNodes[4])
+					currentLiItem.removeChild(currentLiItem.childNodes[3])
+
+					//recreate edit box
+					createToDoItemButton("edit", currentLiItem);
+
+					//store new text, ready to be inserted
+					currentLiText.textContent = tempLiInputBox.value;
+
+					//insert new next into the list
+					currentLiItem.replaceChild(currentLiText, tempLiInputBox);	
+				*/
 					list.removeChild(currentLiItem);
 					addNewItem(list, currentLiText.innerText);
 				}
@@ -130,6 +162,7 @@ var list = document.getElementById("todoList");
 					
 		// Put the ToDoList into Localstorage as string
 		localStorage.setItem('ToDoListHTML', JSON.stringify(document.getElementById("todoList").innerHTML));
+			//issues with HTML change, look to save each 'item' seperately "seperation of concerns"
 
 		inputText.focus();	
 	}
