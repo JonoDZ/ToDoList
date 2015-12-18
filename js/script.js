@@ -23,7 +23,6 @@ var list = document.getElementById("todoList");
 					//watch for click on parent
 					// - google deffering a click event / bubbling
 					//
-
 /*
 	toggle class on tick/return to change hidden class.
 -line through to become “completed” Class
@@ -31,7 +30,6 @@ var list = document.getElementById("todoList");
 editing class for line through/ticked - use to hide/show all aspects of editing
 
 - elements.classlist
-
 
 */
 			currentLiItem.childNodes[0].classList.toggle("linethrough");
@@ -41,14 +39,14 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 		//when the delete button is clicked:
 		else if (el.childNodes[0].className === 'deleteButton') {
 			//remove toDoList item
-			this.removeChild(currentLiItem);
+			this.removeChild(el.parentNode);
 		}
 
 		//when the delete button is clicked: switch the toDo list text to an Input box
 		else if (el.childNodes[0].className === 'editButton') {
 
 			//assign current list entry
-			var currentLiItem = currentLiItem;
+			var currentLiItem = el.parentNode;
 
 			// assign current list item Text
 			var currentLiText = currentLiItem.childNodes[0];
@@ -65,8 +63,7 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 			currentLiItem.removeChild(el);
 
 			//insert confirm and cancel buttons
-			createToDoItemButton('confirmChange', currentLiItem);
-			createToDoItemButton('cancelChange', currentLiItem);
+
 
 			tempLiInputBox.focus();
 
@@ -188,13 +185,47 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 		createToDoItemButton("delete", listItem);
 		createToDoItemButton("line", listItem);
 		createToDoItemButton("edit", listItem);
+		createToDoItemButton('confirmChange', listItem, 'incomplete');
+		createToDoItemButton('cancelChange', listItem, 'incomplete');
 
 	};
 
-	function createToDoItemButton (buttonName, listItem) {
+	function createToDoItemButton (buttonName, listItem, state) {
 		var anchorElement = document.createElement("a");
 		var imgElement = document.createElement("img");
-		imgElement.className = buttonName + "Button";
+		imgElement.className = buttonName + "Button" + " " + state;
 		anchorElement.appendChild(imgElement);
 		listItem.appendChild(anchorElement);
 	};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
