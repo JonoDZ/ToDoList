@@ -23,15 +23,7 @@ var list = document.getElementById("todoList");
 					//watch for click on parent
 					// - google deffering a click event / bubbling
 					//
-/*
-	toggle class on tick/return to change hidden class.
--line through to become “completed” Class
 
-editing class for line through/ticked - use to hide/show all aspects of editing
-
-- elements.classlist
-
-*/
 			currentLiItem.childNodes[0].classList.toggle("linethrough");
 
 		}
@@ -56,13 +48,14 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 			tempLiInputBox.type = "text";
 			tempLiInputBox.className = "toDoInput";
 
+			//toggle visibility of class' when editing item
+			currentLiItem.childNodes[3].childNodes[0].classList.toggle("hidden")
+			currentLiItem.childNodes[4].childNodes[0].classList.toggle("hidden")
+			currentLiItem.childNodes[5].childNodes[0].classList.toggle("hidden")
+
 			//replace the toDoList item with the temporary input box
 			currentLiItem.replaceChild(tempLiInputBox, currentLiText);
 
-			//remove the edit button
-			currentLiItem.removeChild(el);
-
-			//insert confirm and cancel buttons
 
 
 			tempLiInputBox.focus();
@@ -74,9 +67,10 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 				//On "Enter" - insert new text
 				if (event.which==13) {
 					
-					//remove tick/return boxes
-					currentLiItem.removeChild(currentLiItem.childNodes[4])
-					currentLiItem.removeChild(currentLiItem.childNodes[3])
+					//toggle visibility of class' when editing item
+					currentLiItem.childNodes[3].childNodes[0].classList.toggle("hidden") 
+					currentLiItem.childNodes[4].childNodes[0].classList.toggle("hidden")
+					currentLiItem.childNodes[5].childNodes[0].classList.toggle("hidden")
 
 					//recreate edit box
 					createToDoItemButton("edit", currentLiItem);
@@ -92,9 +86,10 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 				//On "Esc" - insert old text
 				else if (event.which==27) {
 					
-				//remove tick/return boxes
-					currentLiItem.removeChild(currentLiItem.childNodes[4])
-					currentLiItem.removeChild(currentLiItem.childNodes[3])
+					//toggle visibility of class' when editing item
+					currentLiItem.childNodes[3].childNodes[0].classList.toggle("hidden")
+					currentLiItem.childNodes[4].childNodes[0].classList.toggle("hidden")
+					currentLiItem.childNodes[5].childNodes[0].classList.toggle("hidden")
 
 					//recreate edit box
 					createToDoItemButton("edit", currentLiItem);
@@ -182,18 +177,25 @@ editing class for line through/ticked - use to hide/show all aspects of editing
 		list.appendChild(listItem);
 		
 		//create ToDo List Buttons
-		createToDoItemButton("delete", listItem);
-		createToDoItemButton("line", listItem);
-		createToDoItemButton("edit", listItem);
-		createToDoItemButton('confirmChange', listItem, 'incomplete');
-		createToDoItemButton('cancelChange', listItem, 'incomplete');
+		createToDoItemButton("deleteButton", listItem);
+		createToDoItemButton("lineButton", listItem);
+		createToDoItemButton("editButton", listItem);
+		createToDoItemButton('confirmChangeButton', listItem, 'hidden');
+		createToDoItemButton('cancelChangeButton', listItem, 'hidden');
 
 	};
 
 	function createToDoItemButton (buttonName, listItem, state) {
 		var anchorElement = document.createElement("a");
 		var imgElement = document.createElement("img");
-		imgElement.className = buttonName + "Button" + " " + state;
+
+		if (! state) {
+			imgElement.className = buttonName;
+		}
+		else {
+			imgElement.className = buttonName + " " + state;
+		}
+		
 		anchorElement.appendChild(imgElement);
 		listItem.appendChild(anchorElement);
 	};
