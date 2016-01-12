@@ -1,0 +1,41 @@
+text 
+delete
+complete
+edit
+confirm new text
+return to old text
+
+text
+complete
+editing
+
+var todo = {
+	text: 'I am a todo',
+	complete: false,
+	editing: false
+}
+
+createElement(li);
+li.innerText = todo.text;
+if (todo.complete) {
+	// complete UI
+}
+else {
+	uncomplete UI
+}
+
+
+var todos = 
+[
+	{
+		id: someID,
+		text: 'I am a todo',
+		complete: false,
+		editing: false
+	},
+
+	{
+		///
+	}
+
+];

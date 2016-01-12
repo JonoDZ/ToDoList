@@ -22,7 +22,6 @@ var list = document.getElementById("todoList");
 			var currentLiItem = el.parentNode;
 					//watch for click on parent
 					// - google deffering a click event / bubbling
-					//
 
 			currentLiItem.childNodes[0].classList.toggle("linethrough");
 
